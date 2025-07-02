@@ -32,7 +32,7 @@ CREATE TABLE orders (
 
 -- Create order_details table
 CREATE TABLE order_details (
-    orderdetailid INT PRIMARY KEY,
+    order_detail_id INT PRIMARY KEY,
     order_id INT,
     book_id INT,
     quantity DOUBLE,
