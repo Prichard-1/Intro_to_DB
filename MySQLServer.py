@@ -1,28 +1,26 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
+import mysql.connector
+from mysql.connector import Error
 
 try:
-    # Connect to MySQL server
-    db = MySQLdb.connect(
-        host="localhost",       # or your DB host
-        user="root",            # replace with your MySQL username
-        passwd="your_password"  # replace with your MySQL password
+    # Establish connection to MySQL server
+    connection = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="your_password"  # Replace with your actual MySQL password
     )
 
-    cursor = db.cursor()
+    if connection.is_connected():
+        cursor = connection.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store;")
+        print("Database 'alx_book_store' created successfully!")
 
-    # Create database if it doesn't exist
-    cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store;")
-    print("Database 'alx_book_store' created successfully!")
-
-except MySQLdb.Error as e:
-    print(f"Error: Unable to connect or execute query - {e}")
-    sys.exit(1)
+except Error as err:
+    print(f"Error: {err}")
 
 finally:
-    if cursor:
+    if 'cursor' in locals() and cursor:
         cursor.close()
-    if db:
-        db.close()
+    if 'connection' in locals() and connection.is_connected():
+        connection.close()
 
