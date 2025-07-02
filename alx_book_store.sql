@@ -22,13 +22,13 @@ CREATE TABLE Authors(
 );
 
 --5 create customer table
-
-CREATE TABLE Customers(
-	customer_id INT PRIMARY KEY,
-	Customer_name VARCHAR(215),
-	email VARCHAR(215),
-	adress TEXT
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(215),
+    email VARCHAR(215),
+    address TEXT
 );
+
 --6. create orders table
 
 CREATE TABLE Orders(
