@@ -1,5 +1,5 @@
 --1.create database
-CREATE DATABASE IF MOT EXIST alx_book_store;
+CREATE DATABASE IF NOT EXISTS alx_book_store;
 
 --2.use the database
 USE alx_book_store;
